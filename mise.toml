@@ -1,0 +1,18 @@
+# Toolchain for the native (no Docker) Penpot stack.
+#
+# Install with:  mise trust && mise install
+# Then run:      just setup && just up
+#
+# See scripts/native/README.md for the full native setup.
+#
+# mise manages user-level tools only. System services (PostgreSQL, Valkey,
+# nginx) come from the OS package manager, and Rust must come from rustup
+# because render-wasm/build calls rustup directly. Emscripten is installed by
+# scripts/native/setup.sh (into ~/emsdk) unless EMSDK already points to a SDK.
+
+[tools]
+node = "24.22.2"          # matches .nvmrc
+pnpm = "12.16.1"          # matches packageManager in package.json
+java = "temurin-27.0.1+0" # JDK 27, the version the Docker devenv pins
+clojure = "1.12.5.1664"
+just = "1.58.0"
